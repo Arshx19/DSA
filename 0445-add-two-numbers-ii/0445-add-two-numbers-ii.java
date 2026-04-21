@@ -23,8 +23,21 @@ class Solution {
         int carry =0;
         ListNode newHead = null;
         while(!s1.isEmpty() || !s2.isEmpty() || carry!=0){
-            int n1=s1.isEmpty() ? 0:s1.pop();
-            int n2=s2.isEmpty() ? 0:s2.pop();
+            int n1=-1;
+            int n2=-1;
+            if(s1.isEmpty()){
+                n1=0;
+            }
+            else{
+                n1=s1.pop();
+            }
+            if(s2.isEmpty()){
+                n2=0;
+            }
+            else{
+                n2=s2.pop();
+            }
+            
             int temp = n1+n2+carry;
             ListNode newNode = new ListNode(temp%10);
             newNode.next = newHead;
