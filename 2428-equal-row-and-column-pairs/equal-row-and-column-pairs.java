@@ -1,21 +1,23 @@
 class Solution {
     public int equalPairs(int[][] grid) {
+        HashMap<String , Integer> map = new HashMap<>();
         int n=grid.length;
-        int count =0;
         for(int i=0;i<n;i++){
+            String row="";
             for(int j=0;j<n;j++){
-                boolean same = true;
-                for(int k=0;k<n;k++){
-                    if(grid[i][k] != grid[k][j]){
-                        same = false;
-                        break;
-                    }
-                }
-                if(same){
-                    count++;
-                }
+                row+=grid[i][j] +',';
             }
+            map.put(row,map.getOrDefault(row,0)+1);
         }
-        return count;
+        int ans=0;
+        for(int i=0;i<n;i++){
+            String col ="";
+            for(int j=0;j<n;j++){
+                col+=grid[j][i]+',';
+            }
+            ans+=map.getOrDefault(col,0);
+        }
+        return ans;
+        
     }
 }
